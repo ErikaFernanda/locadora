@@ -44,16 +44,16 @@ public class Locadora extends JFrame {
     Bd bd;
 
     public Locadora() {
-//      ...................Tela.............................    
-//        this.setExtendedState(MAXIMIZED_BOTH);
+        // ...................Tela.............................
+        // this.setExtendedState(MAXIMIZED_BOTH);
         this.setSize(500, 500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setTitle("LOCADORA");
         this.setLayout(new BorderLayout());
-        
-//      ...................Menu.............................
-        ImageIcon img_menu = new ImageIcon("/Z/fernandaerika/NetBeansProjects/Locadora/src/locadora/menu.png");
-        JLabel img_film = new JLabel(new ImageIcon("/Z/fernandaerika/NetBeansProjects/Locadora/src/locadora/film.png"));
+
+        // ...................Menu.............................
+        ImageIcon img_menu = new ImageIcon(getClass().getResource("menu.png"));
+        JLabel img_film = new JLabel(new ImageIcon(getClass().getResource("film.png")));
 
         menuBotao = new JButton(null, img_menu);
         menuBarra = new JPanel();
@@ -72,19 +72,16 @@ public class Locadora extends JFrame {
         menu.add(cadastrarc);
         menu.add(cadastrarf);
 
-
         locacoes_btn = new JButton("Alugueis Ativos");
 
         filmes_btn = new JButton("Filmes");
         clientes_btn = new JButton("Clientes");
-
 
         clientes_btn.setBackground(Color.gray);
 
         filmes_btn.setBackground(Color.gray);
 
         locacoes_btn.setBackground(Color.gray);
-
 
         clientes_btn.setPreferredSize(new Dimension(190, 50));
 
@@ -136,7 +133,6 @@ public class Locadora extends JFrame {
                 }
             }
         });
-
 
         cadastrarc.addActionListener(new ActionListener() {
 

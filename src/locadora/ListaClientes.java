@@ -41,10 +41,12 @@ public class ListaClientes extends JPanel {
         setSize(500, 500);
         setLayout(new BorderLayout());
 
-        ImageIcon img_menu = new ImageIcon("/Z/fernandaerika/NetBeansProjects/Locadora/src/locadora/busca.png");
+        ImageIcon img_menu = new ImageIcon(getClass().getResource("busca.png"));
         busca = new JTextField("  ");
-        ComboBoxItem[] opcoes = {new ComboBoxItem("Codigo do cliente", "id_cliente"), new ComboBoxItem("Nome", "nome"), new ComboBoxItem("CPF", "cpf"), new ComboBoxItem("Data de cadastro", "data_cadastro"),
-            new ComboBoxItem("Cliente premium", "cliente_premium"), new ComboBoxItem("Idade", "idade"), new ComboBoxItem("Endereço", "endereco"), new ComboBoxItem("Telefone", "telefone")};
+        ComboBoxItem[] opcoes = { new ComboBoxItem("Codigo do cliente", "id_cliente"), new ComboBoxItem("Nome", "nome"),
+                new ComboBoxItem("CPF", "cpf"), new ComboBoxItem("Data de cadastro", "data_cadastro"),
+                new ComboBoxItem("Cliente premium", "cliente_premium"), new ComboBoxItem("Idade", "idade"),
+                new ComboBoxItem("Endereço", "endereco"), new ComboBoxItem("Telefone", "telefone") };
         JComboBox opc = new JComboBox(opcoes);
         opc.setBackground(Color.WHITE);
 
@@ -73,15 +75,15 @@ public class ListaClientes extends JPanel {
         boxbusca.add(btnbusca);
         boxbusca.setBackground(Color.white);
         this.add(boxbusca, BorderLayout.PAGE_START);
-//-----------------------------------tabela----------------------------------------------
-        
-        tabela = new JTable(new DefaultTableModel()){
+        // -----------------------------------tabela----------------------------------------------
+
+        tabela = new JTable(new DefaultTableModel()) {
             public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
             }
         };
-        tabela.setRowHeight(75); 
-        
+        tabela.setRowHeight(75);
+
         tabela.getTableHeader().setReorderingAllowed(false);
         this.add(new JScrollPane(tabela), BorderLayout.CENTER);
         btnbusca.addActionListener(new ActionListener() {
@@ -185,10 +187,6 @@ public class ListaClientes extends JPanel {
 
             }
         });
-
-    }
-
-    public static void main(String[] args) {
 
     }
 

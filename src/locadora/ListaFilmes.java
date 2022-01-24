@@ -31,7 +31,6 @@ public class ListaFilmes extends JPanel {
     JPanel boxbusca;
     JTextField busca;
     JButton btnbusca;
-    
 
     GridBagConstraints gbc;
     GridBagConstraints gbc2;
@@ -42,14 +41,16 @@ public class ListaFilmes extends JPanel {
         setSize(500, 500);
         setLayout(new BorderLayout());
 
-        ImageIcon img_menu = new ImageIcon("/Z/fernandaerika/NetBeansProjects/Locadora/src/locadora/busca.png");
+        ImageIcon img_menu = new ImageIcon(getClass().getResource("busca.png"));
         busca = new JTextField("  ");
-        ComboBoxItem[] opcoes = {new ComboBoxItem("Codigo do filme", "id_filme"), new ComboBoxItem("Titulo", "titulo"), new ComboBoxItem("Gênero", "genero"), new ComboBoxItem("Legenda", "legenda"),
-            new ComboBoxItem("Classificação", "classificacao"), new ComboBoxItem("Data de lançamento", "data_lancamento")};
+        ComboBoxItem[] opcoes = { new ComboBoxItem("Codigo do filme", "id_filme"), new ComboBoxItem("Titulo", "titulo"),
+                new ComboBoxItem("Gênero", "genero"), new ComboBoxItem("Legenda", "legenda"),
+                new ComboBoxItem("Classificação", "classificacao"),
+                new ComboBoxItem("Data de lançamento", "data_lancamento") };
         JComboBox opc = new JComboBox(opcoes);
         opc.setBackground(Color.WHITE);
 
-//      opc.addActionListener(this);
+        // opc.addActionListener(this);
 
         btnbusca = new JButton(null, img_menu);
         boxbusca = new JPanel();
@@ -67,34 +68,34 @@ public class ListaFilmes extends JPanel {
         gbc2 = new GridBagConstraints();
         gbc2.gridx = 0;
         gbc2.gridy = 0;
-//        gbc2.weightx =100;
+        // gbc2.weightx =100;
         gbc2.fill = GridBagConstraints.BASELINE;
         btnbusca.setBackground(Color.WHITE);
         btnbusca.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.black));
-        
-        boxbusca.add(opc,gbc2);
+
+        boxbusca.add(opc, gbc2);
         boxbusca.add(busca, gbc);
         boxbusca.add(btnbusca);
         boxbusca.setBackground(Color.white);
 
         this.add(boxbusca, BorderLayout.PAGE_START);
-//-----------------------------------tabela----------------------------------------------
-        
-        tabela = new JTable(new DefaultTableModel()){
+        // -----------------------------------tabela----------------------------------------------
+
+        tabela = new JTable(new DefaultTableModel()) {
             public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
             }
         };
-        tabela.getTableHeader().setReorderingAllowed(false); 
-        tabela.setRowHeight(75); 
-        
+        tabela.getTableHeader().setReorderingAllowed(false);
+        tabela.setRowHeight(75);
+
         this.add(new JScrollPane(tabela), BorderLayout.CENTER);
         btnbusca.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                locadora.bd.returnBuscaFilme(tabela, busca,opc);
+                locadora.bd.returnBuscaFilme(tabela, busca, opc);
 
             }
         });
@@ -114,36 +115,36 @@ public class ListaFilmes extends JPanel {
 
             @Override
             public void mousePressed(MouseEvent e) {
-                if(e.getButton()==MouseEvent.BUTTON3){
+                if (e.getButton() == MouseEvent.BUTTON3) {
 
                     Point point = e.getPoint();
-                int currentRow = tabela.rowAtPoint(point);
-           
-		tabela.setRowSelectionInterval(currentRow, currentRow);
-                     System.out.println(currentRow);
-                     menu.show(tabela,e.getX(), e.getY());
+                    int currentRow = tabela.rowAtPoint(point);
+
+                    tabela.setRowSelectionInterval(currentRow, currentRow);
+                    System.out.println(currentRow);
+                    menu.show(tabela, e.getX(), e.getY());
 
                 }
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                
+
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                
+
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-                
+
             }
 
             @Override
             public void mouseClicked(MouseEvent e) {
-    
+
             }
         });
         cadastrar.addActionListener(new ActionListener() {
@@ -169,7 +170,6 @@ public class ListaFilmes extends JPanel {
                 locadora.menuBarra.add(locadora.alugarFilme);
                 locadora.menuBarra.revalidate();
                 locadora.menuBarra.setVisible(true);
-                
 
             }
         });
@@ -200,13 +200,9 @@ public class ListaFilmes extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 locadora.bd.filmeLocacao(tabela);
-                
+
             }
         });
-
-    }
-
-    public static void main(String[] args) {
 
     }
 

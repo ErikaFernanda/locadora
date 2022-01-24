@@ -93,12 +93,14 @@ public class CadastrarFilme extends JPanel {
         Salvarl.setVisible(false);
 
         Salvarcf.addActionListener(new ActionListener() {
-           
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                locadora.bd.addFilme(campoIdiomaoriginal.getText(), campoLegenda.isSelected(),campoDuracao.getText(), campoGenero.getText(), campoClassificacao.getText(), campoTitulo.getText(), campoData_lancamento.getText());
-                JOptionPane.showMessageDialog(locadora, "Filme " + campoTitulo.getText() + " cadastrado com sucesso !!");
+                locadora.bd.addFilme(campoIdiomaoriginal.getText(), campoLegenda.isSelected(), campoDuracao.getText(),
+                        campoGenero.getText(), campoClassificacao.getText(), campoTitulo.getText(),
+                        campoData_lancamento.getText());
+                JOptionPane.showMessageDialog(locadora,
+                        "Filme " + campoTitulo.getText() + " cadastrado com sucesso !!");
                 campoTitulo.setText("");
                 campoIdiomaoriginal.setText("");
                 campoLegenda.setSelected(false);
@@ -117,10 +119,6 @@ public class CadastrarFilme extends JPanel {
 
     }
 
-    public static void main(String[] args) {
-
-    }
-
     public void editFilme(JTable tabela) {
         campoIdiomaoriginal.setText((String) tabela.getValueAt(tabela.getSelectedRow(), 1).toString());
         campoLegenda.setText((String) tabela.getValueAt(tabela.getSelectedRow(), 2).toString());
@@ -133,21 +131,21 @@ public class CadastrarFilme extends JPanel {
         Salvarcf.setVisible(false);
         Editarf.setVisible(true);
         Editarf.addActionListener(new ActionListener() {
-//            public String format(Date d) {
-//                DateFormat format = new SimpleDateFormat("dd/MM/yy");
-//                return format.format(d);
-//            }
+            // public String format(Date d) {
+            // DateFormat format = new SimpleDateFormat("dd/MM/yy");
+            // return format.format(d);
+            // }
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                
 
-                locadora.bd.editarFilme(locadora.listaFilmes.tabela, campoIdiomaoriginal.getText(), campoLegenda.isSelected(), campoDuracao.getText(), campoGenero.getText(), 2, campoTitulo.getText(), campoData_lancamento.getText());
+                locadora.bd.editarFilme(locadora.listaFilmes.tabela, campoIdiomaoriginal.getText(),
+                        campoLegenda.isSelected(), campoDuracao.getText(), campoGenero.getText(), 2,
+                        campoTitulo.getText(), campoData_lancamento.getText());
 
             }
         });
 
     }
-
 
 }

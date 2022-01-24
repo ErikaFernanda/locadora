@@ -41,10 +41,12 @@ public class ListaLocacoes extends JPanel {
         setSize(500, 500);
         setLayout(new BorderLayout());
 
-        ImageIcon img_menu = new ImageIcon("/Z/fernandaerika/NetBeansProjects/Locadora/src/locadora/busca.png");
+        ImageIcon img_menu = new ImageIcon(getClass().getResource("busca.png"));
         busca = new JTextField("  ");
-        ComboBoxItem [] opcoes = {new ComboBoxItem("Codigo de locação", "id_locacao"), new ComboBoxItem("Nome", "nome"),new ComboBoxItem("Titulo", "titulo"),
-            new ComboBoxItem("Data de locação", "data_locacao"),new ComboBoxItem("Preço", "preco"),new ComboBoxItem("Data de devolução", "data_devolucao")};
+        ComboBoxItem[] opcoes = { new ComboBoxItem("Codigo de locação", "id_locacao"), new ComboBoxItem("Nome", "nome"),
+                new ComboBoxItem("Titulo", "titulo"),
+                new ComboBoxItem("Data de locação", "data_locacao"), new ComboBoxItem("Preço", "preco"),
+                new ComboBoxItem("Data de devolução", "data_devolucao") };
         JComboBox opc = new JComboBox(opcoes);
         opc.setBackground(Color.WHITE);
 
@@ -67,22 +69,22 @@ public class ListaLocacoes extends JPanel {
         gbc2.fill = GridBagConstraints.BASELINE;
         btnbusca.setBackground(Color.WHITE);
         btnbusca.setBorder(BorderFactory.createMatteBorder(0, 1, 0, 0, Color.black));
-        
-        boxbusca.add(opc,gbc2);
+
+        boxbusca.add(opc, gbc2);
         boxbusca.add(busca, gbc);
         boxbusca.add(btnbusca);
         boxbusca.setBackground(Color.white);
 
         this.add(boxbusca, BorderLayout.PAGE_START);
 
-//-----------------------------------tabela----------------------------------------------
-        tabela = new JTable(new DefaultTableModel()){
+        // -----------------------------------tabela----------------------------------------------
+        tabela = new JTable(new DefaultTableModel()) {
             public boolean isCellEditable(int rowIndex, int mColIndex) {
                 return false;
             }
         };
-        tabela.getTableHeader().setReorderingAllowed(false); 
-        tabela.setRowHeight(75); 
+        tabela.getTableHeader().setReorderingAllowed(false);
+        tabela.setRowHeight(75);
         this.add(new JScrollPane(tabela), BorderLayout.CENTER);
 
         btnbusca.addActionListener(new ActionListener() {
@@ -90,11 +92,10 @@ public class ListaLocacoes extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                locadora.bd.returnBuscaLocacao(tabela, busca,opc);
+                locadora.bd.returnBuscaLocacao(tabela, busca, opc);
 
             }
         });
-        
 
         JPopupMenu menu = new JPopupMenu();
         JMenuItem editar = new JMenuItem("Editar");
@@ -139,8 +140,6 @@ public class ListaLocacoes extends JPanel {
 
             }
         });
-        
-
 
         tabela.addMouseListener(new MouseListener() {
 
@@ -152,7 +151,8 @@ public class ListaLocacoes extends JPanel {
                     int currentRow = tabela.rowAtPoint(point);
 
                     tabela.setRowSelectionInterval(currentRow, currentRow);
-//                    System.out.println(tabela.getSelectedColumn() + " fghjgfjfg"+ tabela.getSelectedRow());
+                    // System.out.println(tabela.getSelectedColumn() + " fghjgfjfg"+
+                    // tabela.getSelectedRow());
                     menu.show(tabela, e.getX(), e.getY());
 
                 }
@@ -187,10 +187,6 @@ public class ListaLocacoes extends JPanel {
 
             }
         });
-
-    }
-
-    public static void main(String[] args) {
 
     }
 

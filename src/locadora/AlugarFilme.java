@@ -92,10 +92,6 @@ public class AlugarFilme extends JPanel {
         setVisible(true);
     }
 
-    public static void main(String[] args) {
-
-    }
-
     public void editLocacao(JTable tabela) {
         Salvarl.setVisible(false);
         SalvarEdit.setVisible(true);
