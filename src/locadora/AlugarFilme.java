@@ -29,7 +29,7 @@ public class AlugarFilme extends JPanel {
 
     JButton Salvarl;
     JButton SalvarEdit;
-    
+
     JComboBox listClient;
     JComboBox listFilm;
 
@@ -37,7 +37,7 @@ public class AlugarFilme extends JPanel {
         this.locadora = locadora;
         setSize(500, 500);
         setLayout(new GridLayout(2, 1));
-        
+
         datadelocacao = new JTextField();
         preco = new JTextField();
         datadedevolucao = new JTextField();
@@ -49,17 +49,17 @@ public class AlugarFilme extends JPanel {
         datadedevolucaotxt = new JLabel("Data de devolução:");
 
         Salvarl = new JButton("Salvar");
-        SalvarEdit =  new JButton("Salvar alteração");
+        SalvarEdit = new JButton("Salvar alteração");
 
         JPanel painel = new JPanel();
         painel.setLayout(new GridLayout(5, 2));
         painel.add(clientetxt);
-        listClient = new  JComboBox(new DefaultComboBoxModel());
-        locadora.bd.ClientesCombox(listClient,painel);
+        listClient = new JComboBox(new DefaultComboBoxModel());
+        locadora.bd.ClientesCombox(listClient, painel);
 
         painel.add(filmetxt);
-        listFilm = new  JComboBox(new DefaultComboBoxModel());
-        locadora.bd.FilmesCombox(listFilm,painel);
+        listFilm = new JComboBox(new DefaultComboBoxModel());
+        locadora.bd.FilmesCombox(listFilm, painel);
 
         painel.add(datadelocacaotxt);
         painel.add(datadelocacao);
@@ -78,12 +78,13 @@ public class AlugarFilme extends JPanel {
         Salvarl.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
-                locadora.bd.addLocacao(locadora.listaFilmes.tabela ,listClient.getSelectedItem(), listFilm.getSelectedItem(), datadelocacao.getText(), preco.getText(), datadedevolucao.getText());
-                
+
+                locadora.bd.addLocacao(locadora.listaFilmes.tabela, listClient.getSelectedItem(),
+                        listFilm.getSelectedItem(), datadelocacao.getText(), preco.getText(),
+                        datadedevolucao.getText());
+
             }
         });
-        
 
         this.add(painel);
         this.add(painel2);
@@ -94,6 +95,7 @@ public class AlugarFilme extends JPanel {
     public static void main(String[] args) {
 
     }
+
     public void editLocacao(JTable tabela) {
         Salvarl.setVisible(false);
         SalvarEdit.setVisible(true);
@@ -104,18 +106,17 @@ public class AlugarFilme extends JPanel {
         preco.setText((String) tabela.getValueAt(tabela.getSelectedRow(), 5).toString());
         filme.setEditable(false);
         cliente.setEditable(false);
-       
+
         SalvarEdit.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                locadora.bd.editarLocacao(locadora.listaLocacoes.tabela, 57, 9, datadelocacao.getText(), datadedevolucao.getText(), preco.getText());
+                locadora.bd.editarLocacao(locadora.listaLocacoes.tabela, 57, 9, datadelocacao.getText(),
+                        datadedevolucao.getText(), preco.getText());
 
-                
-                       
-        }
+            }
         });
-        
+
     }
 
 }
